@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+ 
+    <!-- 启动注解配置 -->
+    <context:annotation-config />
+    
+    <!-- 启动扫描 -->
+    <context:component-scan base-package="serviceimple" />
+    <context:component-scan base-package="serviceexten" />
+    
+    
+    <!--1 引入属性文件，在配置中占位使用 -->
+    <context:property-placeholder location="classpath:*db.properties" />
+    
+     <!--2 配置C3P0数据源 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!--驱动类名 -->
+        <property name="driverClass" value="com.mysql.jdbc.Driver" />
+        <!-- url -->
+        <property name="jdbcUrl" value="jdbc:mysql://47.106.96.86:3306/svcssDB" />
+        <!-- 用户名 -->
+        <property name="user" value="root" />
+        <!-- 密码 -->
+        <property name="password" value="123456" />
+      
+    </bean>
+    
+    <!--3 会话工厂bean sqlSessionFactoryBean -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 数据源 -->
+        <property name="dataSource" ref="dataSource"></property>
+        
+        <!-- 别名
+        <property name="typeAliasesPackage" value="com.zhangguo.bookstore.entities"></property>
+         -->
+         
+   
+        <property name="configLocation" value="mybatis-config.xml"></property>
+    </bean>
+    
+    <!--4 自动扫描对象关系映射 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--指定会话工厂，如果当前上下文中只定义了一个则该属性可省去 -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+        <!-- 指定要自动扫描接口的基础包，实现接口 -->
+        <property name="basePackage" value="mapper"></property>
+    </bean>
+    
+ 
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+  
+
+    <!--6 容器自动扫描IOC组件  -->
+      <context:component-scan base-package="service" />
+      <context:component-scan base-package="serviceexten" />
+      <context:component-scan base-package="serviceimple" />
+   
+</beans>
