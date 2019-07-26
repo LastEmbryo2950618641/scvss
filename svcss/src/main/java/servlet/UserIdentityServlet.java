@@ -5,22 +5,17 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import entity.UserKey;
 import service.IUserAuthentication;
 import util.AutoLoad;
 import util.HttpAutoWiredServlet;
-import webrespository.SpringBeans;
 
 @WebServlet("/UserIdentity")
 public class UserIdentityServlet extends HttpAutoWiredServlet {
@@ -42,10 +37,14 @@ public class UserIdentityServlet extends HttpAutoWiredServlet {
 		
 		String username = "root";
 		String password = "123456";
+		UserKey userKey = new UserKey();
+		
+		userKey.setUsername(username);
+		userKey.setPassword(password);
 		
 		
 		
-		if(userIdentityIfoHandle.Authentication(username, password))
+		if(userIdentityIfoHandle.Authentication(userKey))
 		{
 			System.out.println("test");
 		}
@@ -62,8 +61,9 @@ public class UserIdentityServlet extends HttpAutoWiredServlet {
 		String password = req.getParameter("password");
 		UserKey userKey = new UserKey();
 		
-		
-		if(userIdentityIfoHandle.Authentication(username, password))
+		userKey.setUsername(username);
+		userKey.setPassword(password);
+		if(userIdentityIfoHandle.Authentication(userKey))
 		{
 			PrintWriter pw = resp.getWriter();
 			ObjectMapper mapper = new ObjectMapper();

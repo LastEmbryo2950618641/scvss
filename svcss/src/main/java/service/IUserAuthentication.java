@@ -15,7 +15,7 @@ public interface IUserAuthentication {
 	* @return boolean
 	* @throws 
 	*/
-	boolean Authentication(String username,String password);
+	boolean Authentication(UserKey userKey);
 	
 	/** 
 	* @Title: addUserKey 

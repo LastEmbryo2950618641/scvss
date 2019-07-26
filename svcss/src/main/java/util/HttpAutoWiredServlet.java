@@ -5,7 +5,6 @@ import java.lang.reflect.Field;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
-import webrespository.MybatisUtil;
 import webrespository.SpringBeans;
 
 public class HttpAutoWiredServlet extends HttpServlet {
@@ -64,16 +63,8 @@ public class HttpAutoWiredServlet extends HttpServlet {
 
 
 	
-
-	/*
-	* Title: init
-	* Description: 
-	* @throws ServletException 
-	* @see javax.servlet.GenericServlet#init() 
-	*/
 	@Override
 	public void init() throws ServletException {
-		// TODO Auto-generated method stub
 		super.init();
 		
 		loadClass();
