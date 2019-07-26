@@ -27,4 +27,19 @@ public class IMUserIdentityIfoHandle implements IUserAuthentication {
 		return true;
 	}
 
+	public boolean addUserKey(UserKey userKey) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean checkFormat(UserKey userKey) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean userKeyIsExist(UserKey userKey) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
