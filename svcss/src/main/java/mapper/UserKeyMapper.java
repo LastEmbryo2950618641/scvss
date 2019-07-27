@@ -14,6 +14,7 @@ public interface UserKeyMapper {
  
     int insertSelective(UserKey record);
     
+    UserKey check(String username);
     
     List<UserKey> selectAll();
 }

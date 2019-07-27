@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import entity.UserKey;
 import mapper.UserKeyMapper;
 import service.IUserAuthentication;
+import webrespository.UserConfig;
+import webrespository.UserCredentials;
 
 
 @Service("userIdentityIfoHandle")
@@ -19,12 +21,33 @@ public class IMUserIdentityIfoHandle implements IUserAuthentication {
 	
 	public boolean Authentication(UserKey userKey) {
 		
-	
-		return true;
+		UserKey an=new UserKey();
+		an=userKeyMapper.check(userKey.getUsername());
+		if(an==null) {
+			return false;
+		}else {
+			if((userKey.getPassword().equals(an.getPassword()))==true) {
+				UserCredentials.setUid(an.getUid());
+				UserCredentials.setUsername(an.getUsername());
+				return true;
+			}else {
+				return false;
+			}
+			
+		}
+		
 	}
 
 	public boolean addUserKey(UserKey userKey) {
-		return false;
+		UserKey an=new UserKey();
+		an=userKeyMapper.check(userKey.getUsername());
+		if(an==null) {
+			userKeyMapper.insert(userKey);
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 
 	public boolean checkFormat(UserKey userKey) {
@@ -35,7 +58,13 @@ public class IMUserIdentityIfoHandle implements IUserAuthentication {
 	}
 
 	public boolean userKeyIsExist(UserKey userKey) {
-		return false;
+		UserConfig an=new UserConfig();
+		boolean check=an.checkConfig(userKey);
+		if(check==true) {
+			return true;
+		}else {
+		    return false;
+	    }
 	}
 
 }
