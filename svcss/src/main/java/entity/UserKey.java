@@ -7,13 +7,25 @@ public class UserKey {
     private String username;
 
     private String password;
+    
+    private String utag;
 
     public String getUid() {
         return uid;
     }
 
   
-    public void setUid(String uid) {
+    public String getUtag() {
+		return utag;
+	}
+
+
+	public void setUtag(String utag) {
+		this.utag = utag;
+	}
+
+
+	public void setUid(String uid) {
         this.uid = uid == null ? null : uid.trim();
     }
 

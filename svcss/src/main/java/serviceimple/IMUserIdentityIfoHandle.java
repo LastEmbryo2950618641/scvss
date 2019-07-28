@@ -29,6 +29,7 @@ public class IMUserIdentityIfoHandle implements IUserAuthentication {
 			if((userKey.getPassword().equals(an.getPassword()))==true) {
 				UserCredentials.setUid(an.getUid());
 				UserCredentials.setUsername(an.getUsername());
+				UserCredentials.setUtag(an.getUtag());
 				return true;
 			}else {
 				return false;
