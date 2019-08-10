@@ -2,17 +2,18 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import entity.UserKey;
+import entity.SvcssInvitationCode;
+import entity.SvcssUserKey;
+import service.ICompanyAuthentication;
 import service.IUserAuthentication;
 import util.AutoLoad;
 import util.HttpAutoWiredServlet;
@@ -24,6 +25,9 @@ public class UserIdentityServlet extends HttpAutoWiredServlet {
 	
 	@AutoLoad("userIdentityIfoHandle")
 	IUserAuthentication userIdentityIfoHandle;
+	
+	@AutoLoad("ICompanyIfoHandle")
+	ICompanyAuthentication ICompanyIfoHandle;
 
 	
 	private static final long serialVersionUID = 1L;
@@ -34,13 +38,13 @@ public class UserIdentityServlet extends HttpAutoWiredServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		/*
 		String username = "root";
 		String password = "123456";
-		UserKey userKey = new UserKey();
+		SvcssUserKey userKey = new SvcssUserKey();
 		
-		userKey.setUsername(username);
-		userKey.setPassword(password);
+		userKey.setUserUsername(username);
+		userKey.setUserPassword(password);
 		
 		
 		
@@ -50,6 +54,20 @@ public class UserIdentityServlet extends HttpAutoWiredServlet {
 		}
 		
 		req.getRequestDispatcher("/index.jsp").forward(req, resp);
+		*/
+		List<SvcssInvitationCode> list=ICompanyIfoHandle.selectAllCode();
+		PrintWriter pw = resp.getWriter();
+		ObjectMapper mapper = new ObjectMapper();
+		
+		ObjectNode on = mapper.createObjectNode();
+		for(int i=0;i<list.size();i++) {
+			on.put("ÓÐÐ§µÄÂë"+i, list.get(i).getCode());
+		}
+		
+		mapper.writeValue(pw, on);
+		
+		pw.flush();
+		pw.close();
 	}
 
 	/**
@@ -59,10 +77,10 @@ public class UserIdentityServlet extends HttpAutoWiredServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
-		UserKey userKey = new UserKey();
+		SvcssUserKey userKey = new SvcssUserKey();
 		
-		userKey.setUsername(username);
-		userKey.setPassword(password);
+		userKey.setUserUsername(username);
+		userKey.setUserPassword(password);
 		if(userIdentityIfoHandle.Authentication(userKey))
 		{
 			PrintWriter pw = resp.getWriter();
@@ -92,10 +110,10 @@ public class UserIdentityServlet extends HttpAutoWiredServlet {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		
-		UserKey userKey = new UserKey();
+		SvcssUserKey userKey = new SvcssUserKey();
 		
-		userKey.setUsername(username);
-		userKey.setPassword(password);
+		userKey.setUserUsername(username);
+		userKey.setUserPassword(password);
 		if(!userIdentityIfoHandle.checkFormat(userKey))
 		{
 			PrintWriter pw = resp.getWriter();

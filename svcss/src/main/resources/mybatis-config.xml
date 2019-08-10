@@ -5,6 +5,10 @@
 <configuration>
  
   <mappers>
-    <mapper resource="mybtisxml/UserKeyMapper.xml"/>
+    <mapper resource="mybtisxml/SvcssUserKeyMapper.xml"/>
+    <mapper resource="mybtisxml/SvcssCompanyMapper.xml"/>
+    <mapper resource="mybtisxml/SvcssInvitationCodeMapper.xml"/>
   </mappers>
+  
+  
 </configuration>

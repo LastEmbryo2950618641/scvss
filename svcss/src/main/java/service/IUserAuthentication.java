@@ -1,6 +1,6 @@
 package service;
 
-import entity.UserKey;
+import entity.SvcssUserKey;
 
 public interface IUserAuthentication {
 	
@@ -15,7 +15,7 @@ public interface IUserAuthentication {
 	* @return boolean
 	* @throws 
 	*/
-	boolean Authentication(UserKey userKey);
+	boolean Authentication(SvcssUserKey userKey);
 	
 	/** 
 	* @Title: addUserKey 
@@ -25,7 +25,7 @@ public interface IUserAuthentication {
 	* @return boolean
 	* @throws 
 	*/
-	boolean addUserKey(UserKey userKey);
+	boolean addUserKey(SvcssUserKey userKey);
 	
 	/** 
 	* @Title: userKeyIsExist 
@@ -34,7 +34,7 @@ public interface IUserAuthentication {
 	* @return boolean
 	* @throws 
 	*/
-	boolean userKeyIsExist(UserKey userKey);
+	boolean userKeyIsExist(SvcssUserKey userKey);
 	
 	/** 
 	* @Title: checkFormat 
@@ -44,6 +44,9 @@ public interface IUserAuthentication {
 	* @return boolean
 	* @throws 
 	*/
-	boolean checkFormat(UserKey userKey);
+	boolean checkFormat(SvcssUserKey userKey);
+	
+	
+	SvcssUserKey selectSvcssUserKey(String userid);
 
 }

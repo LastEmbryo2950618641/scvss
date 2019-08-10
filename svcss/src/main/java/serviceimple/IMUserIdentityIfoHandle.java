@@ -4,9 +4,9 @@ package serviceimple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import entity.UserKey;
-import mapper.UserKeyMapper;
+import entity.SvcssUserKey;
+import entity.SvcssUserKeyExample;
+import mapper.SvcssUserKeyMapper;
 import service.IUserAuthentication;
 import webrespository.UserConfig;
 import webrespository.UserCredentials;
@@ -17,19 +17,23 @@ public class IMUserIdentityIfoHandle implements IUserAuthentication {
 	
 	
 	@Autowired
-	UserKeyMapper userKeyMapper;
+	SvcssUserKeyMapper svcssUserKeyMapper;
 	
-	public boolean Authentication(UserKey userKey) {
+	public boolean Authentication(SvcssUserKey svcssUserKey) {
 		
-		UserKey an=new UserKey();
-		an=userKeyMapper.check(userKey.getUsername());
+		
+		SvcssUserKey an=new SvcssUserKey();
+		SvcssUserKeyExample svcssUserKeyExample = new SvcssUserKeyExample();
+		svcssUserKeyExample.createCriteria().andUserUsernameEqualTo(svcssUserKey.getUserUsername());
+		an=svcssUserKeyMapper.selectByExample(svcssUserKeyExample).get(0);
+		
 		if(an==null) {
 			return false;
 		}else {
-			if((userKey.getPassword().equals(an.getPassword()))==true) {
-				UserCredentials.setUid(an.getUid());
-				UserCredentials.setUsername(an.getUsername());
-				UserCredentials.setUtag(an.getUtag());
+			if((svcssUserKey.getUserPassword().equals(an.getUserPassword()))==true) {
+				UserCredentials.setUid(an.getUserId());
+				UserCredentials.setUsername(an.getUserUsername());
+				UserCredentials.setUtag(an.getUserTag());
 				return true;
 			}else {
 				return false;
@@ -39,11 +43,14 @@ public class IMUserIdentityIfoHandle implements IUserAuthentication {
 		
 	}
 
-	public boolean addUserKey(UserKey userKey) {
-		UserKey an=new UserKey();
-		an=userKeyMapper.check(userKey.getUsername());
+	@SuppressWarnings("unused")
+	public boolean addUserKey(SvcssUserKey svcssUserKey) {
+		SvcssUserKey an=new SvcssUserKey();
+		SvcssUserKeyExample svcssUserKeyExample = new SvcssUserKeyExample();
+		svcssUserKeyExample.createCriteria().andUserUsernameEqualTo(svcssUserKey.getUserUsername());
+		an=svcssUserKeyMapper.selectByExample(svcssUserKeyExample).get(0);
 		if(an==null) {
-			userKeyMapper.insert(userKey);
+			svcssUserKeyMapper.insert(svcssUserKey);
 			return true;
 		}else {
 			return false;
@@ -51,14 +58,14 @@ public class IMUserIdentityIfoHandle implements IUserAuthentication {
 		
 	}
 
-	public boolean checkFormat(UserKey userKey) {
+	public boolean checkFormat(SvcssUserKey userKey) {
 	
 		
 		
 		return false;
 	}
 
-	public boolean userKeyIsExist(UserKey userKey) {
+	public boolean userKeyIsExist(SvcssUserKey userKey) {
 		UserConfig an=new UserConfig();
 		boolean check=an.checkConfig(userKey);
 		if(check==true) {
@@ -66,6 +73,15 @@ public class IMUserIdentityIfoHandle implements IUserAuthentication {
 		}else {
 		    return false;
 	    }
+	}
+
+	public SvcssUserKey selectSvcssUserKey(String userid) {
+		// TODO Auto-generated method stub
+		SvcssUserKey an=new SvcssUserKey();
+		SvcssUserKeyExample svcssUserKeyExample = new SvcssUserKeyExample();
+		svcssUserKeyExample.createCriteria().andUserIdEqualTo(userid);
+		an=svcssUserKeyMapper.selectByExample(svcssUserKeyExample).get(0);
+		return an;
 	}
 
 }

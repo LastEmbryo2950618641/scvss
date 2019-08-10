@@ -2,7 +2,8 @@ package webrespository;
 
 import java.util.regex.Pattern;
 
-import entity.UserKey;
+import entity.SvcssUserKey;
+
 
 public class UserConfig {
 	
@@ -16,10 +17,10 @@ public class UserConfig {
 	public static final String ROOT_FILE_PATH ="SCVSS/file";
 	public static final String ADMIN_IMAGE_PATH="SCVSS/file/admin";
 	
-	public boolean checkConfig(UserKey userKey) {
-		boolean isMatch_Username = Pattern.matches(USERNAME_REG, userKey.getUsername());
+	public boolean checkConfig(SvcssUserKey userKey) {
+		boolean isMatch_Username = Pattern.matches(USERNAME_REG, userKey.getUserUsername());
 		
-		boolean isMatch_Password = Pattern.matches(USERNAME_REG, userKey.getPassword());
+		boolean isMatch_Password = Pattern.matches(USERNAME_REG, userKey.getUserPassword());
 		
 		if(isMatch_Username==true&&isMatch_Password==true) {
 			return true;
