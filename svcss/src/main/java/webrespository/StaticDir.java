@@ -5,17 +5,21 @@ import java.util.regex.Pattern;
 import entity.SvcssUserKey;
 
 
-public class UserConfig {
+public class StaticDir {
 	
-	//ÓÃ»§Ãû£¨4µ½16Î»£¬×ÖÄ¸Êý×ÖÏÂ»®Ïß£¬¼õºÅ£©£º
+	//ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½4ï¿½ï¿½16Î»ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½Å£ï¿½ï¿½ï¿½
 	public static final String USERNAME_REG=" /^[-_a-zA-Z0-9]{4,16}$/\r\n";
-	//ÃÜÂë£¨×îÉÙ6Î»£¬°üÀ¨ÖÁÉÙÒ»Î»´óÐ´×ÖÄ¸£¬Ò»Î»Ð¡Ð´×ÖÄ¸£¬Ò»¸öÊý×Ö£¬Ò»¸öÌØÊâ×Ö·û£©£º
+	//ï¿½ï¿½ï¿½ë£¨ï¿½ï¿½ï¿½ï¿½6Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Î»ï¿½ï¿½Ð´ï¿½ï¿½Ä¸ï¿½ï¿½Ò»Î»Ð¡Ð´ï¿½ï¿½Ä¸ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ö£ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½
 	public static final String PASSWORD_REG="/(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[$@!%*#?&])[A-Za-z\\d$@!%*#?&]{6,}$/\r\n" ;
 	
 	
 	
 	public static final String ROOT_FILE_PATH ="SCVSS/file";
 	public static final String ADMIN_IMAGE_PATH="SCVSS/file/admin";
+	
+	
+	
+	
 	
 	public boolean checkConfig(SvcssUserKey userKey) {
 		boolean isMatch_Username = Pattern.matches(USERNAME_REG, userKey.getUserUsername());

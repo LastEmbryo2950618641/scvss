@@ -17,6 +17,7 @@ import service.ICompanyAuthentication;
 import service.IUserAuthentication;
 import util.AutoLoad;
 import util.HttpAutoWiredServlet;
+import webrespository.BaseMessage;
 
 @WebServlet("/UserIdentity")
 public class UserIdentityServlet extends HttpAutoWiredServlet {
@@ -34,7 +35,7 @@ public class UserIdentityServlet extends HttpAutoWiredServlet {
 
 	
 	/**
-	 * ²âÊÔ
+	 * ï¿½ï¿½ï¿½ï¿½
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -55,13 +56,14 @@ public class UserIdentityServlet extends HttpAutoWiredServlet {
 		
 		req.getRequestDispatcher("/index.jsp").forward(req, resp);
 		*/
+	    
 		List<SvcssInvitationCode> list=ICompanyIfoHandle.selectAllCode();
 		PrintWriter pw = resp.getWriter();
 		ObjectMapper mapper = new ObjectMapper();
 		
 		ObjectNode on = mapper.createObjectNode();
 		for(int i=0;i<list.size();i++) {
-			on.put("ÓÐÐ§µÄÂë"+i, list.get(i).getCode());
+			on.put("ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½"+i, list.get(i).getCode());
 		}
 		
 		mapper.writeValue(pw, on);
@@ -71,7 +73,7 @@ public class UserIdentityServlet extends HttpAutoWiredServlet {
 	}
 
 	/**
-	 * µÇÂ¼
+	 * ï¿½ï¿½Â¼
 	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -89,7 +91,7 @@ public class UserIdentityServlet extends HttpAutoWiredServlet {
 			ObjectNode on = mapper.createObjectNode();
 			
 			on.put("isSuccess", true);
-			on.put("massage", "µÇÂ¼³É¹¦");
+			on.put("massage", "ï¿½ï¿½Â¼ï¿½É¹ï¿½");
 			
 			mapper.writeValue(pw, on);
 			
@@ -101,7 +103,7 @@ public class UserIdentityServlet extends HttpAutoWiredServlet {
 	}
 
 	/**
-	 * ×¢²á
+	 * ×¢ï¿½ï¿½
 	 */
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -122,7 +124,7 @@ public class UserIdentityServlet extends HttpAutoWiredServlet {
 			ObjectNode on = mapper.createObjectNode();
 			
 			on.put("isSuccess", false);
-			on.put("massage", "×¢²áÊ§°ÜÐÅÏ¢¸ñÊ½´íÎó");
+			on.put("massage", "×¢ï¿½ï¿½Ê§ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½");
 			
 			mapper.writeValue(pw, on);
 			
@@ -139,7 +141,7 @@ public class UserIdentityServlet extends HttpAutoWiredServlet {
 			ObjectNode on = mapper.createObjectNode();
 			
 			on.put("isSuccess", false);
-			on.put("massage", "ÓÃ»§ÒÑ´æÔÚ");
+			on.put("massage", "ï¿½Ã»ï¿½ï¿½Ñ´ï¿½ï¿½ï¿½");
 			
 			mapper.writeValue(pw, on);
 			
@@ -157,7 +159,7 @@ public class UserIdentityServlet extends HttpAutoWiredServlet {
 		ObjectNode on = mapper.createObjectNode();
 		
 		on.put("isSuccess", true);
-		on.put("massage", "ÓÃ»§Ìí¼Ó³É¹¦");
+		on.put("massage", "ï¿½Ã»ï¿½ï¿½ï¿½Ó³É¹ï¿½");
 		
 		mapper.writeValue(pw, on);
 		

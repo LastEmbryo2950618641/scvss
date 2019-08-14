@@ -8,7 +8,7 @@ import entity.SvcssUserKey;
 import entity.SvcssUserKeyExample;
 import mapper.SvcssUserKeyMapper;
 import service.IUserAuthentication;
-import webrespository.UserConfig;
+import webrespository.StaticDir;
 import webrespository.UserCredentials;
 
 
@@ -66,7 +66,7 @@ public class IMUserIdentityIfoHandle implements IUserAuthentication {
 	}
 
 	public boolean userKeyIsExist(SvcssUserKey userKey) {
-		UserConfig an=new UserConfig();
+		StaticDir an=new StaticDir();
 		boolean check=an.checkConfig(userKey);
 		if(check==true) {
 			return true;
