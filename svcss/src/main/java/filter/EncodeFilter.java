@@ -14,6 +14,11 @@ public class EncodeFilter implements Filter {
 	
 	private String encoding;
 	
+	public void destroy() {
+
+    }
+
+	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		

@@ -70,6 +70,8 @@ public class UserIdentityServlet extends HttpAutoWiredServlet {
 		
 		pw.flush();
 		pw.close();
+		
+		
 	}
 
 	/**

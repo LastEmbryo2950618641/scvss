@@ -1,5 +1,6 @@
 package service;
 
+import entity.SvcssStudent;
 import entity.SvcssUserKey;
 
 public interface IUserAuthentication {
@@ -46,7 +47,24 @@ public interface IUserAuthentication {
 	*/
 	boolean checkFormat(SvcssUserKey userKey);
 	
+	/**
+	 * 
 	
+	* @Title: selectSvcssUserKey
+	
+	* @Description: 获取账号信息
+	
+	* @param userid
+	* @return
+	 */
 	SvcssUserKey selectSvcssUserKey(String userid);
+	
+	
+	/**
+	 * @Description:查看选课的学生信息
+	 */
+	SvcssStudent selectStuInformation(String stu_id);
+	
+	
 
 }

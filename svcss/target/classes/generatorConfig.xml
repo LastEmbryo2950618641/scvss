@@ -37,16 +37,8 @@
 
       
         
-      <table tableName="svcss_company" domainObjectName="SvcssCompany" ></table>
+      <table tableName="svcss_time_choose" domainObjectName="SvcssTimeChoose" ></table>
       <table tableName="svcss_course" domainObjectName="SvcssCourse" ></table>
-      <table tableName="svcss_course_status" domainObjectName="SvcssCourseStatus" ></table>
-      <table tableName="svcss_course_tag" domainObjectName="SvcssCourseTag" ></table>
-      <table tableName="svcss_grade" domainObjectName="SvcssGrade" ></table>
-      <table tableName="svcss_grade_statistics" domainObjectName="SvcssGradeStatistics" ></table>
-      <table tableName="svcss_invitation_code" domainObjectName="SvcssInvitationCode" ></table>
-      <table tableName="svcss_manager" domainObjectName="SvcssManager" ></table>
-      <table tableName="svcss_student" domainObjectName="SvcssStudent" ></table>
-      <table tableName="svcss_teacher" domainObjectName="SvcssTeacher" ></table>
-      <table tableName="svcss_user_key" domainObjectName="SvcssUserKey" ></table>
+     
     </context>
 </generatorConfiguration>

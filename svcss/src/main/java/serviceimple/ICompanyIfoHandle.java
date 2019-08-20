@@ -27,7 +27,9 @@ public class ICompanyIfoHandle implements ICompanyAuthentication{
 	@Autowired
 	SvcssInvitationCodeMapper svcssInvitationCodeMapper;
 	
-	
+	/**
+	 * 显示公司信息
+	 */
 	public SvcssCompany showCompany(String companyid) {
 		// TODO Auto-generated method stub
 		SvcssCompanyExample an=new SvcssCompanyExample();
@@ -36,7 +38,9 @@ public class ICompanyIfoHandle implements ICompanyAuthentication{
 		
 		return getvalue;
 	}
-
+    /**
+     * 更新密码
+     */
 	public boolean updatePassword(String userid,String password) {
 		// TODO Auto-generated method stub
 		SvcssUserKeyExample example=new SvcssUserKeyExample();
@@ -46,7 +50,9 @@ public class ICompanyIfoHandle implements ICompanyAuthentication{
 		svcssUserKeyMapper.updateByExample(userkey, example);
 		return true;
 	}
-
+     /**
+      * 查看邀请码
+      */
 	public List<SvcssInvitationCode> selectAllCode() {
 		// TODO Auto-generated method stub
 		SvcssInvitationCodeExample example=new SvcssInvitationCodeExample();
@@ -54,5 +60,7 @@ public class ICompanyIfoHandle implements ICompanyAuthentication{
 		List<SvcssInvitationCode> list=svcssInvitationCodeMapper.selectByExample(example);
 		return list;
 	}
+	
+	
 
 }

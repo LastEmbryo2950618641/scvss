@@ -4,8 +4,12 @@ package serviceimple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import entity.SvcssStudent;
+import entity.SvcssStudentExample;
 import entity.SvcssUserKey;
 import entity.SvcssUserKeyExample;
+import mapper.SvcssStudentMapper;
 import mapper.SvcssUserKeyMapper;
 import service.IUserAuthentication;
 import webrespository.StaticDir;
@@ -18,6 +22,9 @@ public class IMUserIdentityIfoHandle implements IUserAuthentication {
 	
 	@Autowired
 	SvcssUserKeyMapper svcssUserKeyMapper;
+	
+	@Autowired
+	SvcssStudentMapper svcssStudentMapper;
 	
 	public boolean Authentication(SvcssUserKey svcssUserKey) {
 		
@@ -81,6 +88,15 @@ public class IMUserIdentityIfoHandle implements IUserAuthentication {
 		SvcssUserKeyExample svcssUserKeyExample = new SvcssUserKeyExample();
 		svcssUserKeyExample.createCriteria().andUserIdEqualTo(userid);
 		an=svcssUserKeyMapper.selectByExample(svcssUserKeyExample).get(0);
+		return an;
+	}
+
+	public SvcssStudent selectStuInformation(String stu_id) {
+		// TODO Auto-generated method stub
+		SvcssStudent an=new SvcssStudent();
+		SvcssStudentExample studentExample=new SvcssStudentExample();
+		studentExample.createCriteria().andStuIdEqualTo(stu_id);
+		an=(SvcssStudent) svcssStudentMapper.selectByExample(studentExample);
 		return an;
 	}
 

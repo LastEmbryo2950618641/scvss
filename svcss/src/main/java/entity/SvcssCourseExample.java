@@ -753,6 +753,146 @@ public class SvcssCourseExample {
             addCriterion("course_status_id not between", value1, value2, "courseStatusId");
             return (Criteria) this;
         }
+
+        public Criteria andCourseReleaseTimeIsNull() {
+            addCriterion("course_release_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseReleaseTimeIsNotNull() {
+            addCriterion("course_release_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseReleaseTimeEqualTo(String value) {
+            addCriterion("course_release_time =", value, "courseReleaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseReleaseTimeNotEqualTo(String value) {
+            addCriterion("course_release_time <>", value, "courseReleaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseReleaseTimeGreaterThan(String value) {
+            addCriterion("course_release_time >", value, "courseReleaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseReleaseTimeGreaterThanOrEqualTo(String value) {
+            addCriterion("course_release_time >=", value, "courseReleaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseReleaseTimeLessThan(String value) {
+            addCriterion("course_release_time <", value, "courseReleaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseReleaseTimeLessThanOrEqualTo(String value) {
+            addCriterion("course_release_time <=", value, "courseReleaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseReleaseTimeLike(String value) {
+            addCriterion("course_release_time like", value, "courseReleaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseReleaseTimeNotLike(String value) {
+            addCriterion("course_release_time not like", value, "courseReleaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseReleaseTimeIn(List<String> values) {
+            addCriterion("course_release_time in", values, "courseReleaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseReleaseTimeNotIn(List<String> values) {
+            addCriterion("course_release_time not in", values, "courseReleaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseReleaseTimeBetween(String value1, String value2) {
+            addCriterion("course_release_time between", value1, value2, "courseReleaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseReleaseTimeNotBetween(String value1, String value2) {
+            addCriterion("course_release_time not between", value1, value2, "courseReleaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseAuditTimeIsNull() {
+            addCriterion("course_audit_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseAuditTimeIsNotNull() {
+            addCriterion("course_audit_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseAuditTimeEqualTo(String value) {
+            addCriterion("course_audit_time =", value, "courseAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseAuditTimeNotEqualTo(String value) {
+            addCriterion("course_audit_time <>", value, "courseAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseAuditTimeGreaterThan(String value) {
+            addCriterion("course_audit_time >", value, "courseAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseAuditTimeGreaterThanOrEqualTo(String value) {
+            addCriterion("course_audit_time >=", value, "courseAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseAuditTimeLessThan(String value) {
+            addCriterion("course_audit_time <", value, "courseAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseAuditTimeLessThanOrEqualTo(String value) {
+            addCriterion("course_audit_time <=", value, "courseAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseAuditTimeLike(String value) {
+            addCriterion("course_audit_time like", value, "courseAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseAuditTimeNotLike(String value) {
+            addCriterion("course_audit_time not like", value, "courseAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseAuditTimeIn(List<String> values) {
+            addCriterion("course_audit_time in", values, "courseAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseAuditTimeNotIn(List<String> values) {
+            addCriterion("course_audit_time not in", values, "courseAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseAuditTimeBetween(String value1, String value2) {
+            addCriterion("course_audit_time between", value1, value2, "courseAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseAuditTimeNotBetween(String value1, String value2) {
+            addCriterion("course_audit_time not between", value1, value2, "courseAuditTime");
+            return (Criteria) this;
+        }
     }
 
     /**

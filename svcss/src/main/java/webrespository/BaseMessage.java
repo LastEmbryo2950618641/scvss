@@ -13,7 +13,7 @@ public  class   BaseMessage<PropsType> {
     //是否成功
 	private boolean isSuccess;
 	//返回参数
-	private PropsType props;    
+	public PropsType props;    
 	
 
 	
@@ -26,6 +26,14 @@ public  class   BaseMessage<PropsType> {
 		return code;
 	}
 	
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	public boolean isSuccess() {
 		return isSuccess;
 	}
@@ -45,8 +53,6 @@ public  class   BaseMessage<PropsType> {
 		
 		this.message = messageAndCode.getMessage();
 		this.code = messageAndCode.getCode();
-		
-		
 		this.isSuccess = isSuccess;
 		this.props = props;
 	}
