@@ -1,5 +1,6 @@
 package service;
 
+import entity.SvcssGateNumber;
 import entity.SvcssStudent;
 import entity.SvcssUserKey;
 
@@ -64,6 +65,19 @@ public interface IUserAuthentication {
 	 * @Description:查看选课的学生信息
 	 */
 	SvcssStudent selectStuInformation(String stu_id);
+	
+	
+	/**
+	 * 
+	
+	* @Title: selectGateNumber
+	
+	* @Description: 查找该专业学生选课门数
+	
+	* @param stu_professional
+	* @return 该专业学生选课门数
+	 */
+	int selectGateNumber(String stu_professional);
 	
 	
 

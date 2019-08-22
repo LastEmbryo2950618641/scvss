@@ -11,6 +11,7 @@
     <mapper resource="mybtisxml/SvcssStudentMapper.xml"/>
     <mapper resource="mybtisxml/SvcssCourseMapper.xml"/>
     <mapper resource="mybtisxml/SvcssTimeChooseMapper.xml"/> 
+    <mapper resource="mybtisxml/SvcssGateNumberMapper.xml"/> 
   </mappers>
   
   

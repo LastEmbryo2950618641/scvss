@@ -1,6 +1,7 @@
 package util;
 
 import java.util.List;
+import java.util.Map;
 
 import entity.SvcssCompany;
 import webrespository.BaseMessage;
@@ -21,6 +22,8 @@ public class ReturnFormat {
 		}else if(an.props instanceof List) {
 			Class<? extends Object> mn=an.props.getClass();
 			
+			
+		}else if(an.props instanceof Map){
 			
 		}else {
 			

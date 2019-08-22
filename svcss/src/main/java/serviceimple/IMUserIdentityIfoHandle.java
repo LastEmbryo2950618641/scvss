@@ -5,10 +5,13 @@ package serviceimple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import entity.SvcssGateNumber;
+import entity.SvcssGateNumberExample;
 import entity.SvcssStudent;
 import entity.SvcssStudentExample;
 import entity.SvcssUserKey;
 import entity.SvcssUserKeyExample;
+import mapper.SvcssGateNumberMapper;
 import mapper.SvcssStudentMapper;
 import mapper.SvcssUserKeyMapper;
 import service.IUserAuthentication;
@@ -25,6 +28,9 @@ public class IMUserIdentityIfoHandle implements IUserAuthentication {
 	
 	@Autowired
 	SvcssStudentMapper svcssStudentMapper;
+	
+	@Autowired
+	SvcssGateNumberMapper svcssGateNumberMapper;
 	
 	public boolean Authentication(SvcssUserKey svcssUserKey) {
 		
@@ -98,6 +104,14 @@ public class IMUserIdentityIfoHandle implements IUserAuthentication {
 		studentExample.createCriteria().andStuIdEqualTo(stu_id);
 		an=(SvcssStudent) svcssStudentMapper.selectByExample(studentExample);
 		return an;
+	}
+
+	public int selectGateNumber(String stu_professional) {
+		// TODO Auto-generated method stub
+		SvcssGateNumberExample example=new SvcssGateNumberExample();
+		example.createCriteria().andStuProfessionalEqualTo(stu_professional);
+		SvcssGateNumber an=svcssGateNumberMapper.selectByExample(example).get(0);
+		return an.getCourseGateNumber();
 	}
 
 }

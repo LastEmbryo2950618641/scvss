@@ -39,6 +39,7 @@
         
       <table tableName="svcss_time_choose" domainObjectName="SvcssTimeChoose" ></table>
       <table tableName="svcss_course" domainObjectName="SvcssCourse" ></table>
+      <table tableName="svcss_gate_number" domainObjectName="SvcssGateNumber"></table>
      
     </context>
 </generatorConfiguration>
