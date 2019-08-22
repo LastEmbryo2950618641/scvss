@@ -17,7 +17,9 @@ import service.ICompanyAuthentication;
 import service.IUserAuthentication;
 import util.AutoLoad;
 import util.HttpAutoWiredServlet;
+import util.ReturnFormat;
 import webrespository.BaseMessage;
+import webrespository.MessageAndCode;
 
 @WebServlet("/UserIdentity")
 public class UserIdentityServlet extends HttpAutoWiredServlet {
@@ -65,7 +67,14 @@ public class UserIdentityServlet extends HttpAutoWiredServlet {
 		for(int i=0;i<list.size();i++) {
 			on.put("��Ч����"+i, list.get(i).getCode());
 		}
-		
+		/**
+		ReturnFormat cn=new ReturnFormat();
+		MessageAndCode bn=null;
+		BaseMessage an=new BaseMessage<List<SvcssInvitationCode>>(bn, true, list);
+		ReturnFormat kn=new ReturnFormat();
+		String mm=kn.Formation(an);
+		on.put("测试", mm);
+		**/
 		mapper.writeValue(pw, on);
 		
 		pw.flush();
@@ -85,15 +94,17 @@ public class UserIdentityServlet extends HttpAutoWiredServlet {
 		
 		userKey.setUserUsername(username);
 		userKey.setUserPassword(password);
+		
 		if(userIdentityIfoHandle.Authentication(userKey))
 		{
+			
 			PrintWriter pw = resp.getWriter();
 			ObjectMapper mapper = new ObjectMapper();
 			
 			ObjectNode on = mapper.createObjectNode();
 			
 			on.put("isSuccess", true);
-			on.put("massage", "��¼�ɹ�");
+			on.put("massage", "ok");
 			
 			mapper.writeValue(pw, on);
 			
